@@ -4,13 +4,13 @@ using SapperTest.Contracts;
 using SapperTest.Model;
 using SapperTest.Models;
 
-namespace SapperTest.Services
+namespace SapperTest.Repository
 {
-    public class GameInfoService : IGameInfoService
+    public class GameInfoRepository : IGameInfoRepository
     {
         private readonly IMongoCollection<GameInfo> _gameInfoCollection;
 
-        public GameInfoService(IOptions<GameInfoDatabaseSettings> databaseSettings, IMongoDatabase database)
+        public GameInfoRepository(IOptions<GameInfoDatabaseSettings> databaseSettings, IMongoDatabase database)
         {
             _gameInfoCollection = database.GetCollection<GameInfo>(databaseSettings.Value.GameInfoCollectionName);
         }

@@ -5,7 +5,7 @@ namespace SapperTest.Contracts
     /// <summary>
     /// Работа с базой данных
     /// </summary>
-    public interface IGameInfoService
+    public interface IGameInfoRepository
     {
         /// <summary>
         /// Получить данные по идентификатору игры

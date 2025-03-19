@@ -2,6 +2,7 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using SapperTest.Contracts;
 using SapperTest.Models;
+using SapperTest.Repository;
 using SapperTest.Services;
 using Serilog;
 
@@ -44,7 +45,8 @@ builder.Services.AddSingleton(scope =>
 });
 
 builder.Services.AddSingleton<IMinesweeperService, MinesweeperService>();
-builder.Services.AddSingleton<IGameInfoService, GameInfoService>();
+builder.Services.AddSingleton<IGameService, GameService>();
+builder.Services.AddSingleton<IGameInfoRepository, GameInfoRepository>();
 
 builder.Services.AddSerilog();
 

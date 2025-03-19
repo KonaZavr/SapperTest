@@ -51,11 +51,6 @@ namespace SapperTest.Services
             return newField;
         }
 
-        public List<List<string>> CastField(List<List<FieldItem>> field)
-        {
-            return field.Select(x => x.Select(y => y.ToString()).ToList()).ToList();
-        }
-
         public List<List<FieldItem>> OpenItems(GameInfo gameInfo, int openRow, int openColumn)
         {
             var field = gameInfo.Field!;

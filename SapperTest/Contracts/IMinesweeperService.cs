@@ -18,13 +18,6 @@ namespace SapperTest.Contracts
         List<List<FieldItem>> GenerateField(int width, int height, int minesCount);
 
         /// <summary>
-        /// Преобразует поле в требуемый формат для вывода (массив массива строк)
-        /// </summary>
-        /// <param name="field">Поле</param>
-        /// <returns></returns>
-        List<List<string>> CastField(List<List<FieldItem>> field);
-
-        /// <summary>
         /// Открывает ячейки поля
         /// </summary>
         /// <param name="gameInfo">Информация по игре</param>
