@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using SapperTest.Contracts;
 using SapperTest.Models;
 using SapperTest.Services;
@@ -28,8 +30,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IMongoClient>(scope =>
+{
+    var databaseSettings = scope.GetRequiredService<IOptions<GameInfoDatabaseSettings>>();
+    return new MongoClient(databaseSettings.Value.ConnectionString);
+});
+
+builder.Services.AddSingleton(scope =>
+{
+    var client = scope.GetRequiredService<IMongoClient>();
+    var databaseSettings = scope.GetRequiredService<IOptions<GameInfoDatabaseSettings>>();
+    return client.GetDatabase(databaseSettings.Value.DatabaseName);
+});
+
 builder.Services.AddSingleton<IMinesweeperService, MinesweeperService>();
-builder.Services.AddSingleton<GameInfoService>();
+builder.Services.AddSingleton<IGameInfoService, GameInfoService>();
 
 builder.Services.AddSerilog();
 

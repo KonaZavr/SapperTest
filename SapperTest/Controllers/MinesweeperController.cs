@@ -11,9 +11,9 @@ namespace SapperTest.Controllers
     public class MinesweeperController : ControllerBase
     {
         private readonly IMinesweeperService _minesweeperService;
-        private readonly GameInfoService _gameInfoService;
+        private readonly IGameInfoService _gameInfoService;
 
-        public MinesweeperController(IMinesweeperService minesweeperService, GameInfoService gameInfoService)
+        public MinesweeperController(IMinesweeperService minesweeperService, IGameInfoService gameInfoService)
         {
             _minesweeperService = minesweeperService;
             _gameInfoService = gameInfoService;
