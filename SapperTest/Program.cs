@@ -48,7 +48,10 @@ builder.Services.AddSingleton<IMinesweeperService, MinesweeperService>();
 builder.Services.AddSingleton<IGameService, GameService>();
 builder.Services.AddSingleton<IGameInfoRepository, GameInfoRepository>();
 
-builder.Services.AddSerilog();
+builder.Services.AddSerilog(Log.Logger = 
+     new LoggerConfiguration()
+    .WriteTo.File("log.txt", Serilog.Events.LogEventLevel.Warning)
+    .CreateLogger());
 
 var app = builder.Build();
 
